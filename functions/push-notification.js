@@ -13,7 +13,7 @@ const graphQLClient = new GraphQLClient(faunadbEndpoint, {
 
 const vapidPrivateKey = process.env.VAPID_PRIVATE_KEY;
 const vapidPublicKey =
-  'MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAETtzJDtKpee4AMn2WsWXnIaJ5aUoQ15pSE1NapqQWEPBaRf6Oj_HG81BXC26e3t3mLzWCnBloeSGxCuw_kPuQZQ==';
+  'BLjPdsEE_Cn44UR-Z1Dxssh44z8PDjWKe4eGbHVs6GVNKxGpMATYIzJYTlewPQosbQHJ3IaYly3xNvFZXAb-BBM';
 webpush.setVapidDetails('mailto:witoldwrob@gmail.com', vapidPublicKey, vapidPrivateKey);
 
 const isAuthenticated = (event) => {

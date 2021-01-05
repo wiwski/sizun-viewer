@@ -73,7 +73,7 @@ const About = () => {
           const pushSubscription = await swRegistration.pushManager.subscribe({
             userVisibleOnly: true,
             applicationServerKey: urlBase64ToUint8Array(
-              'MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAETtzJDtKpee4AMn2WsWXnIaJ5aUoQ15pSE1NapqQWEPBaRf6Oj_HG81BXC26e3t3mLzWCnBloeSGxCuw_kPuQZQ=='
+              'BLjPdsEE_Cn44UR-Z1Dxssh44z8PDjWKe4eGbHVs6GVNKxGpMATYIzJYTlewPQosbQHJ3IaYly3xNvFZXAb-BBM'
             ),
           });
           const subSaved = await saveSubscriptionToServer(pushSubscription);
@@ -85,7 +85,7 @@ const About = () => {
         })
         .catch((error) => {
           console.error('An error occured setting up push notification', 'warning');
-          console.error(error);
+          console.log(error);
         });
     } else {
       console.error('Notifications not allowed.', 'error');
