@@ -1,7 +1,12 @@
 const fetch = require(`node-fetch`);
 
-exports.createPages = async ({ actions: { createPage } }) => {
+exports.onCreatePage = async ({ page, actions: { createPage, deletePage } }) => {
+  deletePage(page);
+
   function humanize(str) {
+    if (!str) {
+      return str;
+    }
     let i;
     const frags = str.split('_');
     for (i = 0; i < frags.length; i += 1) {
@@ -28,8 +33,10 @@ exports.createPages = async ({ actions: { createPage } }) => {
     url: ad.url,
   }));
   createPage({
-    path: `/`,
-    context: { advertisments },
-    component: require.resolve('./src/pages/index.js'),
+    ...page,
+    context: {
+      ...page.context,
+      advertisments,
+    },
   });
 };
