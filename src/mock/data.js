@@ -9,7 +9,7 @@ export const headData = {
 
 // HERO DATA
 export const heroData = {
-  title: 'Les nouvelles maisons du',
+  title: 'Maisons & terrains du',
   name: 'Cap Sizun',
   subtitle: 'Scrollez pour voir les annonces.',
 };

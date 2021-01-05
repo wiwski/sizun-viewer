@@ -62,9 +62,11 @@ const Projects = ({ advertisments }) => {
                             <p className="mb-4">Surface maison : {houseArea || ''} m²</p>
                           )}
 
-                          {gardenArea && (
-                            <p className="mb-4">Surface jardin : {gardenArea || ''} m²</p>
-                          )}
+                          {
+                            <p className="mb-4">
+                              Surface jardin : {gardenArea ? `${gardenArea} m²` : 'N/A'}
+                            </p>
+                          }
 
                           <p className="mb-4">{source || ''}</p>
                         </div>
@@ -74,7 +76,7 @@ const Projects = ({ advertisments }) => {
                           className="cta-btn cta-btn--hero"
                           href={url || '#!'}
                         >
-                          See Live
+                          Voir l&apos;annonce
                         </a>
                       </div>
                     </Fade>
