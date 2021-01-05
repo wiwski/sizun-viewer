@@ -6,7 +6,6 @@ import { Container, Row, Col } from 'react-bootstrap';
 import Title from '../Title/Title';
 
 const Projects = ({ advertisments }) => {
-  console.log(advertisments);
   const [isDesktop, setIsDesktop] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
