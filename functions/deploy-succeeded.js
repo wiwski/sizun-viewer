@@ -16,16 +16,6 @@ const vapidPublicKey =
   'BLjPdsEE_Cn44UR-Z1Dxssh44z8PDjWKe4eGbHVs6GVNKxGpMATYIzJYTlewPQosbQHJ3IaYly3xNvFZXAb-BBM';
 webpush.setVapidDetails('mailto:witoldwrob@gmail.com', vapidPublicKey, vapidPrivateKey);
 
-const isAuthenticated = (event) => {
-  /**
-   * @type {String[]}
-   */
-  const apiKeys = JSON.parse(process.env.ACCESS_KEYS);
-  const { headers } = event;
-  if ('x-api-key' in headers && apiKeys.includes(headers['x-api-key'])) return true;
-  return false;
-};
-
 const getAllSubscriptions = async () => {
   const query = `query {
     allPushNotificationSubscriptions{
@@ -61,12 +51,6 @@ exports.pushToSubscription = sendPushMsg;
 
 exports.handler = async (event) => {
   const method = event.httpMethod;
-  if (!isAuthenticated(event)) {
-    return {
-      statusCode: 401,
-      body: `{"errors": "Invalid api key"}`,
-    };
-  }
   switch (method) {
     case 'POST':
       const subscriptions = await getAllSubscriptions();
