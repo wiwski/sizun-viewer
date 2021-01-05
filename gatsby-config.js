@@ -31,8 +31,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Simplefolio`,
-        short_name: `Simplefolio`,
+        name: `Maisons & terrains du Cap Sizun`,
+        short_name: `Annonces Cap Sizun`,
         start_url: `/`,
         background_color: `#fff`,
         theme_color: `#215177`,
