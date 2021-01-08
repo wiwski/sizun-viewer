@@ -19,7 +19,8 @@ self.addEventListener('push', (event) => {
 });
 
 self.addEventListener('notificationclick', (event) => {
+  const siteUrl = process.env.GATSBY_WEBSITE_URL;
   event.notification.close();
   // eslint-disable-next-line no-undef
-  clients.openWindow(event.notification.data.url);
+  clients.openWindow(siteUrl);
 });
