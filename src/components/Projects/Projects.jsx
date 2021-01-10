@@ -4,6 +4,7 @@ import Fade from 'react-reveal/Fade';
 import Tilt from 'react-tilt';
 import { Container, Row, Col } from 'react-bootstrap';
 import Title from '../Title/Title';
+import DateTimeFormatter from './DateTimeFormatter';
 
 const Projects = ({ advertisments }) => {
   const [isDesktop, setIsDesktop] = useState(false);
@@ -23,7 +24,7 @@ const Projects = ({ advertisments }) => {
     <section id="projects">
       <Container>
         <div className="project-wrapper">
-          <Title title="Projects" />
+          <Title title="Annonces" />
           {advertisments &&
             advertisments.map((ad) => {
               const {
@@ -37,6 +38,7 @@ const Projects = ({ advertisments }) => {
                 gardenArea,
                 source,
                 localization,
+                created,
               } = ad;
 
               return (
@@ -56,19 +58,28 @@ const Projects = ({ advertisments }) => {
                             {description ||
                               'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Excepturi neque, ipsa animi maiores repellendu distinctioaperiam earum dolor voluptatum consequatur blanditiis inventore debitis fuga numquam voluptate architecto itaque molestiae.'}
                           </p>
-                          <p className="mb-4">{price || ''} €</p>
+                          <p className="mb-4">
+                            {new Intl.NumberFormat('fr-FR', {
+                              style: 'currency',
+                              currency: 'EUR',
+                              minimumFractionDigits: 0,
+                            }).format(price) || ''}
+                          </p>
                           <p className="mb-4">{localization || ''}</p>
                           {houseArea && (
                             <p className="mb-4">Surface maison : {houseArea || ''} m²</p>
                           )}
 
-                          {
-                            <p className="mb-4">
-                              Surface jardin : {gardenArea ? `${gardenArea} m²` : 'N/A'}
-                            </p>
-                          }
+                          <p className="mb-4">
+                            Surface jardin : {gardenArea ? `${gardenArea} m²` : 'N/A'}
+                          </p>
 
                           <p className="mb-4">{source || ''}</p>
+                          {created && (
+                            <p className="mb-4">
+                              Publiée le <DateTimeFormatter dateTime={created} />
+                            </p>
+                          )}
                         </div>
                         <a
                           target="_blank"
