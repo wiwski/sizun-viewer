@@ -54,10 +54,7 @@ const Projects = ({ advertisments }) => {
                       <div className="project-wrapper__text">
                         <h3 className="project-wrapper__text-title">{name || 'Project Title'}</h3>
                         <div>
-                          <p>
-                            {description ||
-                              'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Excepturi neque, ipsa animi maiores repellendu distinctioaperiam earum dolor voluptatum consequatur blanditiis inventore debitis fuga numquam voluptate architecto itaque molestiae.'}
-                          </p>
+                          <p>{description}</p>
                           <p className="mb-4">
                             {new Intl.NumberFormat('fr-FR', {
                               style: 'currency',
@@ -81,14 +78,6 @@ const Projects = ({ advertisments }) => {
                             </p>
                           )}
                         </div>
-                        <a
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="cta-btn cta-btn--hero"
-                          href={url || '#!'}
-                        >
-                          Voir l&apos;annonce
-                        </a>
                       </div>
                     </Fade>
                   </Col>
@@ -127,6 +116,16 @@ const Projects = ({ advertisments }) => {
                         </a>
                       </div>
                     </Fade>
+                  </Col>
+                  <Col lg={12} sm={12} className="ad-link-col">
+                    <a
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="cta-btn cta-btn--hero"
+                      href={url || '#!'}
+                    >
+                      Voir l&apos;annonce
+                    </a>
                   </Col>
                 </Row>
               );
