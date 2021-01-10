@@ -12,36 +12,16 @@ module.exports = {
       resolve: `gatsby-plugin-offline`,
       options: {
         appendScript: require.resolve(`${__dirname}/src/notification-sw.js`),
-      },
-      workboxConfig: {
-        runtimeCaching: [
-          {
-            urlPattern: /(\.js$|\.css$|static\/)/,
-            handler: `CacheFirst`,
-          },
-          {
-            urlPattern: /^https?:.*\/page-data\/.*\/(page-data|app-data)\.json$/,
-            handler: `NetworkFirst`,
-            options: {
-              networkTimeoutSeconds: 1,
+        workboxConfig: {
+          runtimeCaching: [
+            {
+              // page-data.json files, static query results and app-data.json
+              // are not content hashed
+              urlPattern: /^https?:.*\/page-data\/.*\.json/,
+              handler: `NetworkFirst`,
             },
-          },
-          {
-            urlPattern: /^https?:.*\.(png|jpg|jpeg|webp|svg|gif|tiff|js|woff|woff2|json|css)$/,
-            handler: `StaleWhileRevalidate`,
-          },
-          {
-            urlPattern: /^https?:\/\/fonts\.googleapis\.com\/css/,
-            handler: `StaleWhileRevalidate`,
-          },
-          {
-            urlPattern: /\/$/,
-            handler: `NetworkFirst`,
-            options: {
-              networkTimeoutSeconds: 1,
-            },
-          },
-        ],
+          ],
+        },
       },
     },
     {
