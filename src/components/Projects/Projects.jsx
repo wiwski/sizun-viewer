@@ -4,7 +4,9 @@ import Fade from 'react-reveal/Fade';
 import Tilt from 'react-tilt';
 import { Container, Row, Col } from 'react-bootstrap';
 import Title from '../Title/Title';
+
 import DateTimeFormatter from './DateTimeFormatter';
+import NoImage from './NoImage';
 
 const Projects = ({ advertisments }) => {
   const [isDesktop, setIsDesktop] = useState(false);
@@ -54,7 +56,11 @@ const Projects = ({ advertisments }) => {
                       <div className="project-wrapper__text">
                         <h3 className="project-wrapper__text-title">{name || 'Project Title'}</h3>
                         <div>
-                          <p>{description}</p>
+                          <p>
+                            {description && description.split(' ').length > 70
+                              ? `${description.split(' ').slice(0, 69).join(' ')} ...`
+                              : description}
+                          </p>
                           <p className="mb-4">
                             {new Intl.NumberFormat('fr-FR', {
                               style: 'currency',
@@ -110,7 +116,11 @@ const Projects = ({ advertisments }) => {
                             }}
                           >
                             <div data-tilt className="thumbnail rounded">
-                              <img alt={name} src={pictureUrl} />
+                              {pictureUrl ? (
+                                <img alt={name} src={pictureUrl} />
+                              ) : (
+                                <NoImage alt={name} />
+                              )}
                             </div>
                           </Tilt>
                         </a>
